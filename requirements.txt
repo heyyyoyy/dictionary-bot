@@ -1,0 +1,5 @@
+git+https://github.com/aiogram/aiogram.git@dev-2.x
+beautifulsoup4
+aresponses
+pytest
+lxml

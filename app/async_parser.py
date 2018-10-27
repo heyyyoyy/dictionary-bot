@@ -27,10 +27,10 @@ class Scrapper:
     async def get_descriptions(self, html):
         return html.find_all('div', class_='def-block pad-indent')
 
-    async def get_talking(self, desc):
+    async def get_interpretation(self, desc):
         return desc.find('b', class_='def').text.strip()
 
-    async def get_translate(self, desc):
+    async def get_translation(self, desc):
         return desc.find('span', class_='trans').text.strip()
 
     async def get_example(self, desc):
@@ -47,8 +47,8 @@ class Scrapper:
         content.append(title)
         descriptions = await self.get_descriptions(html)
         for d in descriptions:
-            talking = await self.get_talking(d)
-            transl = await self.get_translate(d)
+            interpretation = await self.get_interpretation(d)
+            translation = await self.get_translation(d)
             ex = await self.get_example(d)
-            content.extend([talking, transl, ex])
+            content.extend([interpretation, translation, ex])
         return '\n'.join(content)

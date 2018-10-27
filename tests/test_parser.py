@@ -54,21 +54,21 @@ async def desc(scrapper, soup, event_loop):
 
 
 @pytest.mark.asyncio
-async def test_get_translate(scrapper, desc, event_loop):
-    translate = await scrapper.get_translate(desc[0])
-    assert translate == 'последний'
+async def test_get_translation(scrapper, desc, event_loop):
+    translation = await scrapper.get_translation(desc[0])
+    assert translation == 'последний'
 
 
 @pytest.mark.asyncio
-async def test_get_talking(scrapper, desc, event_loop):
-    translate = await scrapper.get_talking(desc[0])
-    assert translate == 'the most recent'
+async def test_get_interpretation(scrapper, desc, event_loop):
+    interpretation = await scrapper.get_interpretation(desc[0])
+    assert interpretation == 'the most recent'
 
 
 @pytest.mark.asyncio
 async def test_get_example(scrapper, desc, event_loop):
-    translate = await scrapper.get_example(desc[0])
-    assert translate == 'What was the last film you saw?'
+    example = await scrapper.get_example(desc[0])
+    assert example == 'What was the last film you saw?'
 
 
 @pytest.mark.asyncio

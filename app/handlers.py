@@ -1,6 +1,7 @@
 from aiogram import Bot, Dispatcher
 from aiogram.types import ParseMode, Message
 from aiohttp import BasicAuth
+from app.async_parser import Scrapper
 from app.conf import TOKEN, PROXY, PROXY_LOGIN, PROXY_PASSWORD
 import logging
 
@@ -14,4 +15,5 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def welcome(message: Message):
-    await bot.send_message(message.from_user.id, 'hi')
+    scrapper = Scrapper('last')
+    await bot.send_message(message.from_user.id, await scrapper.run())

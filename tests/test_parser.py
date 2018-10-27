@@ -28,13 +28,6 @@ def html():
         yield f.read()
 
 
-# @pytest.yield_fixture(scope='session')
-# def description():
-#         with open(os.path.abspath(os.path.join(os.path.dirname(__file__),
-#               'data/desc_last.html'))) as f:
-#         yield f.read()
-
-
 @pytest.yield_fixture(scope='session')
 def soup(html):
     yield BeautifulSoup(html, 'lxml')

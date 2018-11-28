@@ -4,12 +4,12 @@ from aiohttp import ClientSession
 
 class Scrapper:
 
-    __slots__ = 'world', 'url', 'header'
+    __slots__ = 'word', 'url', 'header'
 
-    def __init__(self, world):
+    def __init__(self, word):
         self.url = ('https://dictionary.cambridge.org/dictionary/english-'
                     'russian/')
-        self.world = world
+        self.word = word
         self.header = {'User-Agent': ('Mozilla/5.0'
                                       '(X11;Linux x86_64) AppleWebKit/537.36'
                                       ' (KHTML, like Gecko)'
@@ -17,7 +17,7 @@ class Scrapper:
 
     async def get_html(self):
         async with ClientSession() as session:
-            async with session.get(self.url + self.world,
+            async with session.get(self.url + self.word,
                                    headers=self.header) as resp:
                 return await resp.text()
 
